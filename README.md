@@ -5,7 +5,7 @@ This is a **frontend-only** assignment for ENTNT using **localStorage** to simul
 
 ##  Live Demo
 
- [Deployed on Render] 
+ https://dental-center-management-6nf9.onrender.com
 
 ##  Tech Stack
 
