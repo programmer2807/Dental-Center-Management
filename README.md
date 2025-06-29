@@ -5,9 +5,9 @@ This is a **frontend-only** assignment for ENTNT using **localStorage** to simul
 
 ##  Live Demo
 
-🔗 [Deployed on Render] 
+ [Deployed on Render] 
 
-## 🛠 Tech Stack
+##  Tech Stack
 
 - **React** (Functional Components)
 - **React Router v6**
