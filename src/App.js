@@ -6,11 +6,15 @@ import Patients from './pages/Patients';
 import Incidents from './pages/Incidents';
 import PatientDashboard from './pages/PatientDashboard';
 import CalendarView from './pages/CalendarView';
+import { seedLocalStorage } from './utils/seedData';
 
 
 import Login from './pages/Login';
 
 function App() {
+
+  seedLocalStorage();
+  
   return (
     <AuthProvider>
       <BrowserRouter>

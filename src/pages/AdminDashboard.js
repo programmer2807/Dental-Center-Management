@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import KpiCard from '../components/KpiCard';
 import PatientForm from '../components/PatientForm';
 import { v4 as uuidv4 } from 'uuid';
+import { seedLocalStorage } from '../utils/seedData';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const AdminDashboard = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('authUser');
-        navigate('/login');
+        navigate('/');
     };
 
     const handleAddPatient = (newPatient) => {
@@ -27,6 +28,12 @@ const AdminDashboard = () => {
         setPatients(updated);
         localStorage.setItem('patients', JSON.stringify(updated));
         setShowForm(false);
+    };
+
+    const handleResetLocalStorage = () => {
+        localStorage.clear();        
+        seedLocalStorage();           
+        window.location.reload();     
     };
 
     const revenue = incidents.reduce((sum, item) => sum + (item.cost || 0), 0);
@@ -38,42 +45,48 @@ const AdminDashboard = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">
-            {/* Header + Logout */}
+            {/* Header */}
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
-                <button
-                    onClick={handleLogout}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-                >
-                    Logout
-                </button>
+
+                <div className="flex gap-3">
+                    <button
+                        onClick={() => navigate('/calendar')}
+                        className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition"
+                    >
+                         View Calendar
+                    </button>
+                    <button
+                        onClick={handleResetLocalStorage}
+                        className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
+                    >
+                        Reset Data
+                    </button>
+                    <button
+                        onClick={handleLogout}
+                        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+                    >
+                         Logout
+                    </button>
+                </div>
             </div>
 
-            <button
-                onClick={() => navigate('/calendar')}
-                className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-            >
-                View Calendar
-            </button>
-
-
-            {/* Create / Manage Patient Buttons */}
+           
             <div className="flex gap-4 mb-6">
                 <button
                     onClick={() => setShowForm(true)}
                     className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
                 >
-                    ➕ Create Patient
+                     Create Patient
                 </button>
                 <button
                     onClick={() => navigate('/patients')}
                     className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
                 >
-                    📋 Manage Patients
+                     Manage Patients
                 </button>
             </div>
 
-            {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
                 <KpiCard label="Total Patients" value={patients.length} />
                 <KpiCard label="Completed Treatments" value={completed} />
@@ -81,7 +94,7 @@ const AdminDashboard = () => {
                 <KpiCard label="Total Revenue" value={`₹${revenue}`} />
             </div>
 
-            {/* Next 10 Appointments Table */}
+     
             <h2 className="text-lg font-semibold mb-3 text-gray-700">Next 10 Appointments</h2>
             <div className="bg-white shadow rounded p-4 overflow-x-auto">
                 <table className="w-full text-sm text-left">

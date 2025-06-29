@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+#  Dental Center Management Dashboard (Frontend Only)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive, role-based dental clinic management dashboard built with **React**, featuring patient management, appointment tracking, and file uploads.  
+This is a **frontend-only** assignment for ENTNT using **localStorage** to simulate all data.
 
-## Available Scripts
+##  Live Demo
 
-In the project directory, you can run:
+🔗 [Deployed on Render] 
 
-### `npm start`
+## 🛠 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React** (Functional Components)
+- **React Router v6**
+- **Context API**
+- **Tailwind CSS**
+- **localStorage** (Simulated backend)
+- **React Toastify**
+- **File uploads** via base64/Blob URLs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## User Roles
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Admin (Dentist)
 
-### `npm run build`
+- Full access to manage patients and appointments
+- View calendar, KPIs, and dashboard insights
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> **Login Credentials:**
+- Email: `admin@entnt.in`
+- Password: `admin123`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+###  Patient
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Can only view their profile, upcoming appointments, and treatment history
 
-### `npm run eject`
+> **Login Credentials:**
+- Email: `john@entnt.in`
+- Password: `patient123`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+###  Authentication (Simulated)
+- Role-based protected routes
+- Session stored in `localStorage`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+###  Admin Dashboard
+- Add, Edit, Delete Patients
+- Manage Appointments per Patient
+- Upload treatment files (stored as base64)
+- View Calendar with scheduled appointments
+- KPIs: revenue, pending/completed, top patients
 
-## Learn More
+###  Patient Dashboard
+- View personal details
+- Upcoming appointments
+- Treatment history with downloadable files
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+###  File Uploads
+- Invoice, X-Ray files stored as base64/blob
+- Openable/downloadable from UI
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+###  Responsive UI
+- Mobile-first and tablet-friendly layout
+- Clean Tailwind styling
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+##  Data Persistence
 
-### Analyzing the Bundle Size
+All data is simulated and stored in `localStorage`:
+- `users`: Admin and Patient accounts
+- `patients`: Full patient records
+- `incidents`: Appointment records per patient
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Data is seeded automatically on first load via `seedData.js`.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+##  Getting Started (Local Setup)
 
-### Advanced Configuration
+1. **Clone the repository**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   git clone https://github.com/programmer2807/Dental-Center-Management.git
+   cd Dental-Center-Management
 
-### Deployment
+2. **Install dependencies**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   npm install
 
-### `npm run build` fails to minify
+3. **Run the Project**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    npm start
+

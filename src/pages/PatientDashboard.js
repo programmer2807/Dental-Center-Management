@@ -4,17 +4,25 @@ const PatientDashboard = () => {
   const [patient, setPatient] = useState(null);
   const [incidents, setIncidents] = useState([]);
 
-  useEffect(() => {
-    const authUser = JSON.parse(localStorage.getItem('authUser'));
-    const allPatients = JSON.parse(localStorage.getItem('patients')) || [];
-    const allIncidents = JSON.parse(localStorage.getItem('incidents')) || [];
+ useEffect(() => {
+  const authUser = JSON.parse(localStorage.getItem('authUser'));
+  const allPatients = JSON.parse(localStorage.getItem('patients')) || [];
+  const allIncidents = JSON.parse(localStorage.getItem('incidents')) || [];
 
-    const loggedInPatient = allPatients.find(p => p.id === authUser?.patientId);
+  console.log('authUser', authUser);
+  console.log('allPatients', allPatients);
+  console.log('allIncidents', allIncidents);
+
+  const loggedInPatient = allPatients.find(p => p.id === authUser?.patientId);
+  console.log('loggedInPatient', loggedInPatient);
+
+  if (loggedInPatient) {
     setPatient(loggedInPatient);
-
-    const patientIncidents = allIncidents.filter(i => i.patientId === loggedInPatient?.id);
+    const patientIncidents = allIncidents.filter(i => i.patientId === loggedInPatient.id);
     setIncidents(patientIncidents);
-  }, []);
+  }
+}, []);
+
 
   const upcoming = incidents
     .filter(i => new Date(i.appointmentDate) > new Date())
@@ -28,7 +36,7 @@ const PatientDashboard = () => {
     <div className="min-h-screen bg-gray-50 p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">Welcome, {patient?.name}</h1>
 
-      {/* Profile Info */}
+      
       <div className="bg-white p-4 rounded shadow mb-6">
         <h2 className="text-lg font-semibold mb-2 text-gray-700">Your Profile</h2>
         <p><strong>DOB:</strong> {patient?.dob}</p>
@@ -36,7 +44,7 @@ const PatientDashboard = () => {
         <p><strong>Health Info:</strong> {patient?.healthInfo}</p>
       </div>
 
-      {/* Upcoming Appointments */}
+      
       <div className="bg-white p-4 rounded shadow mb-6">
         <h2 className="text-lg font-semibold mb-2 text-indigo-700">Upcoming Appointments</h2>
         {upcoming.length === 0 ? (

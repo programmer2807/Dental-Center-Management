@@ -19,7 +19,7 @@ const Login = () => {
       const user = JSON.parse(localStorage.getItem('authUser'));
       toast.success('Login successful!');
       setTimeout(() => {
-        navigate(user.role === 'Admin' ? '/dashboard' : '/my-info');
+        navigate(user.role === 'Admin' ? '/dashboard' : '/patient');
       }, 1500);
     } else {
       toast.error('Invalid credentials!');
