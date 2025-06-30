@@ -94,3 +94,21 @@ Data is seeded automatically on first load via `seedData.js`.
 
     npm start
 
+
+### Technical Decisions
+
+1.Context API was chosen over Redux for simplicity.
+
+2.All user/session data is handled via localStorage to mimic backend behavior.
+
+3.Tailwind CSS ensures mobile-first responsive design.
+
+4.Incident management supports file previews with base64 conversion.
+
+
+##  Known Issues
+1.As per requirements, file uploads are not persisted beyond localStorage.
+
+2.There is no server-side validation; form validation is handled in the frontend.
+
+
